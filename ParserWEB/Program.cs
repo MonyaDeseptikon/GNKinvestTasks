@@ -14,9 +14,6 @@ namespace ParserWEB
             var sourceForSearch = "https://yandex.ru/images/";
             var yandexParser = new Parser();
             yandexParser.spiderMain(searchQuery, sourceForSearch);
-
-
-            // Debug.WriteLine(searchQuery);
             
         }
 
