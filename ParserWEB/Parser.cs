@@ -27,14 +27,15 @@ namespace ParserWEB
                 Console.WriteLine("!!!!!!!!!!!!!Браузер не смог открыть предоставленный URL");                   
             }
             ClosePopUpElement(spider);
-            WaitForLoadTextBox(spider, 5);                           
+            WaitForLoadTextBox(spider, 10);                           
             
             inputQuery(userQuery, spider);
-            WaitForLoadFirstClass(spider, 5);
+            ClosePopUpElement(spider);
+            WaitForLoadFirstClass(spider, 20);
             ScreenshotMake(spider, "Открытие поисковой страницы.png");
 
             OpenFirstPicture(spider);
-            WaitForLoadFirstClass(spider, 5);
+            WaitForLoadFirstClass(spider, 10);
             ScreenshotMake(spider, "Результат поиска.png");
 
             spider.Quit();
@@ -42,11 +43,11 @@ namespace ParserWEB
 
             private IWebDriver CreateSpider() {
             string usedUA = "Mozilla/5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 148.0.0.0 YaBrowser / 26.6.0.0 Safari / 537.36";
-            string wellMaintainedUserProfile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WellMaintainedUserProfile");
 
+            string wellMaintainedUserProfile = Path.Combine(Directory.GetCurrentDirectory(), "WellMaintainedUserProfile");                  
             ChromeOptions spiderOptions = new ChromeOptions();
-            spiderOptions.AddArgument($"user-data-dir={wellMaintainedUserProfile}");
-            //spiderOptions.AddArgument("--headless=new");
+            //spiderOptions.AddArgument($"user-data-dir={wellMaintainedUserProfile}");
+            spiderOptions.AddArgument("--headless=new");
             spiderOptions.AddArgument("--disable-blink-features=AutomationControlled");
             spiderOptions.AddArgument("--disable-dev-shm-usage");
             spiderOptions.AddArgument("--disable-gpu");
@@ -79,6 +80,7 @@ namespace ParserWEB
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             //string tempPath = Path.GetTempFileName();
             string tempPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), picName);
+            //string tempPath = Path.Combine(Path.GetTempFileName(), picName);
             ss.SaveAsFile(tempPath);
         }
 
