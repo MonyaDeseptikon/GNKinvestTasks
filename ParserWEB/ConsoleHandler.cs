@@ -4,32 +4,26 @@ using System.Text;
 
 namespace ParserWEB
 {
-    public class ConsoleHandler
+    internal class ConsoleHandler
     {
-        public string InputConsole()
+        internal string InputConsole(string inputMassage)
         {
             string? input = null;
 
-            while (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            while (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Введите тему для поиска фотографии\n");
+                Console.WriteLine(inputMassage);
                 input = Console.ReadLine();
-                if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+                if (string.IsNullOrWhiteSpace(input))
                 {
-                    Console.WriteLine("Вы ничего не ввели, попробуйте еще раз.\n");
+                    Console.WriteLine("Вы ничего не ввели, попробуйте еще раз.");
                 }
                 else
                 {
-                    Console.WriteLine($"Выбранная вами тема для поиска фото: {input}\n");
+                    Console.WriteLine($"Вы ввели: {input}");
                 }
             }
             return input;
-        }
-
-        private bool InputCheck(string input)
-        {
-            return string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input);
-
-        }
+        }      
     }
 }
