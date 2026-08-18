@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DataBase/DataBase.csproj" Id="5cb9abf9-6936-4535-81ff-5a5fc5277c62" />
   <Project Path="ParserWEB/ParserWEB.csproj" Id="50dd700d-360a-4ef6-a626-e1002aec880d" />
 </Solution>

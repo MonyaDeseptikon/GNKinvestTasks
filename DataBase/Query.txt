@@ -1,0 +1,5 @@
+SELECT Cp.FullName,D.Title , S.IsCurrent, S.Status , S.StartDate , S.FinishedDate   
+FROM Counterparties Cp 
+JOIN Deals D ON Cp.Id = D.CounterpartyId
+JOIN Stages S ON D.Id = S.DealId 
+WHERE Cp.FullName = "ГНК Инвест"
